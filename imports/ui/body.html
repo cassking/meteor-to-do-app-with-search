@@ -1,0 +1,61 @@
+<body>
+    <div class="container">
+      <div class="search-container">
+
+ {{> search}}
+      </div>
+        <header>
+            <h1>To do list</h1>
+            {{> addTask }}
+
+            <label class="hide-completed">
+              <input type="checkbox" />
+              Hide completed tasks
+            </label>
+             <!-- Only show add task form if logged in -->
+            {{> loginButtons }}
+            {{#if currentUser }}
+
+            <form class="new-task form-wrapper cf">
+              <input type="text" name="text" placeholder="Type to add new tasks and hit the ENTER key" />
+            </form>
+            {{/if}}
+        </header>
+        <ul>
+            {{#each tasks}}
+            {{> task}}
+            {{/each }}
+        </ul>
+    </div>
+</body>
+
+
+ <template name="addTask">
+
+</template>
+
+<template name="search">
+  <form id="searchform">
+    <input type="text" data-action="search" id="searchValue" placeholder="Enter search terms here."/>
+    <button id ="search" class="btn-small">Search</button>
+  </form>
+<h2>Results:</h2>
+  <ol>
+
+
+    {{#each results}}
+       <!-- Iterate on all Objects fetched by the Helper Class-->
+        <li>
+<strong>Author:</strong> {{username}}   <strong>Task text:</strong> {{text}}  <strong>Date:</strong> {{createdAt}}
+        </li>
+    {{/each}}
+
+           <!-- {{ results}} -->
+
+
+
+
+ <!-- {{/if}} -->
+
+  </ol>
+</template>
