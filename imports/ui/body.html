@@ -1,32 +1,51 @@
 <body>
+    <div class="main">
     <div class="container">
-      <div class="search-container">
+      <div class="search-wrapper container-fluid">
 
- {{> search}}
+  <div class="search-container">
+
+{{> search}}
+
+</div>
+
+
+
+
       </div>
-        <header>
-            <h1>To do list</h1>
-            {{> addTask }}
+<div class="todo-wrapper container-fluid">
+  <header>
+      <h2>Tasks list</h2>
+      <p>Please <strong>Sign in</strong> to add tasks</p>
 
-            <label class="hide-completed">
-              <input type="checkbox" />
-              Hide completed tasks
-            </label>
-             <!-- Only show add task form if logged in -->
-            {{> loginButtons }}
-            {{#if currentUser }}
+      {{> addTask }}
 
-            <form class="new-task form-wrapper cf">
-              <input type="text" name="text" placeholder="Type to add new tasks and hit the ENTER key" />
-            </form>
-            {{/if}}
-        </header>
-        <ul>
-            {{#each tasks}}
-            {{> task}}
-            {{/each }}
-        </ul>
+      <label class="hide-completed">
+        <input type="checkbox" />
+        Hide completed tasks
+      </label>
+       <!-- Only show add task form if logged in -->
+      {{> loginButtons }}
+      {{#if currentUser }}
+
+      <form class="new-task form-wrapper cf">
+        <input type="text" name="text" placeholder="Type to add new tasks and hit the ENTER key" />
+      </form>
+      {{/if}}
+  </header>
+
+</div>
+<div class="tasks-wrapper container-fluid">
+
+  <ul>
+      {{#each tasks}}
+      {{> task}}
+      {{/each }}
+  </ul>
+</div>
+
     </div>
+  </div >
 </body>
 
 
@@ -35,27 +54,49 @@
 </template>
 
 <template name="search">
-  <form id="searchform">
-    <input type="text" data-action="search" id="searchValue" placeholder="Enter search terms here."/>
-    <button id ="search" class="btn-small">Search</button>
-  </form>
-<h2>Results:</h2>
+  <div class="form-group">
+    <form id="searchform">
+      <input class="form-control" type="text" data-action="search" id="searchValue" placeholder="Enter search terms here."/>
+      <button id ="search" class=" btn   btn-small  btn-primary ">Search</button>
+      <!-- <input class="form-control" type="text" data-action="searchname" id="searchValue"   placeholder="Enter name here."/>
+
+      <button id ="name" class=" btn   btn-small  btn-info btn-fill">Search by name</button> -->
+    </form>
+{{> sort}}
+</div>
   <ol>
-
-
+{{# if results isTrue }}
     {{#each results}}
        <!-- Iterate on all Objects fetched by the Helper Class-->
         <li>
-<strong>Author:</strong> {{username}}   <strong>Task text:</strong> {{text}}  <strong>Date:</strong> {{createdAt}}
+<strong>Author:</strong> {{username}}
+<strong>Task text:</strong> {{text}}<br />
+<strong>Date:</strong>   {{createdAt}}
         </li>
+        {{else}}
+        <p>
+           Sorry, we found no matches!
+        </p>
     {{/each}}
-
-           <!-- {{ results}} -->
-
-
-
-
- <!-- {{/if}} -->
+    {{/if}}
 
   </ol>
+</template>
+
+<template name="sort">
+  <div class="sort-wrapper">
+    <form class="form-inline">
+      <div class="btn-group" data-toggle="buttons-radio">
+        <button class="sort_by_name btn btn-small btn-primary btn-fill " type="button">Sort by Name</button>
+        <button class="sort_by_date btn btn-small btn-info btn-fill " type="button">Sort by Date</button>
+
+        <!-- <button class="sort_by_score btn btn-small {{#if sort_by_is 'score'}}active{{/if}}" type="button">Sort by Score</button> -->
+        <!-- <button class="sort_by_name btn btn-small {{#if sort_by_is 'name'}}active{{/if}}" type="button">Sort by Name</button> -->
+      </div>
+      <button class="reset btn btn-danger btn-small" type="button"><i class="icon-refresh icon-white"></i> Reset</button>
+
+      <a class="btn btn-link btn-small" href="#"><i class="icon-question-sign"></i> Help</a>
+    </form>
+  </div>
+
 </template>

@@ -14,6 +14,3 @@ Meteor.startup(function(){
   // });
   // // seed();
 })
-
-
-Meteor.publish('things', function(){});

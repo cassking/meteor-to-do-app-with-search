@@ -1,7 +1,15 @@
 /* CSS declarations go here */
 
 body {
-    font-family: sans-serif;
+    font-family: Caslon, "Proxima Nova", Avenir, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif !important;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;*/
+    line-height: 1.428571429;
+    color: #555555;
+    font-weight: 300;
+    font-size: 1.875rem;
+    line-height: 1.6;
+    background-color: #ffffff;
+    /*font-family: sans-serif;
     background: #555555 url("img/bg.png") !important;
     font: 13px 'Lucida sans', Arial, Helvetica;
     color: #eee;
@@ -12,68 +20,85 @@ body {
     right: 0;
     padding: 0;
     margin: 0;
-    font-size: 14px;
+    font-size: 14px;*/
 }
-
-.cf:before, .cf:after{
-    content:"";
-    display:table;
-  }
-
-  .cf:after{
-    clear:both;
-  }
-
-  .cf{
-    zoom:1;
-  }
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    zoom: 1;
+}
 .container {
-    max-width: 600px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0;
     min-height: 100%;
+}
+abbr {
+    color: #dddddd;
+    font-style: italic;
 }
 header {
     padding: 20px 15px 15px 15px;
     position: relative;
 }
 #login-buttons {
+    float: right;
     display: block;
 }
+
 h1 {
-    font-size: 2em;
+    color: #555555;
+    /*font-size: 2em;
     font-weight:800;
     margin: 0;
     margin-bottom: 10px;
     display: inline-block;
     margin-right: 1em;
     color: #d83c3c !important;
-    text-shadow: -1px 3px 5px #0A0000;
+    text-shadow: -1px 3px 5px #0A0000;*/
 }
 a {
-  font-weight: 800;
+    /*font-weight: 800;
   text-transform: uppercase;
-  color: #d83c3c !important;
-
+  color: #d83c3c !important;*/
 }
-a:hover {
-
-}
+a:hover {}
 #login-buttons a, .accounts-dialog a {
-  text-decoration: none !important;
+    text-decoration: none !important;
+}
+strong {
+    color: #2CA8FF;
 }
 #login-buttons .login-button, .accounts-dialog .login-button {
-  background-color:   #d83c3c !important;
-
+    /*background-color: #d83c3c !important;*/
+    background-color: #FF9500 !important;
+    border-color: #eeeeee;
 }
 form {
     margin-top: 10px;
     margin-bottom: -10px;
     position: relative;
 }
-
+.form-group {
+    padding: 2rem;
+    text-align: center;
+    border-radius:6px;
+    background: url(img/bg-clouds.png);
+    /*opacity: 0.8;*/
+    background-position: 0px 0px;
+    background-repeat: repeat-x;
+    animation: animatedBackground  40s linear infinite;
+    background-color: #e6f8ff;
+    border: 1px solid #a9e7ff;
+}
 .form-wrapper {
     padding: 25px;
-    margin: 50px auto 50px auto;
+    margin: 20px auto 10px auto;
     background: #444;
     background: rgba(0, 0, 0, .2);
     -moz-border-radius: 10px;
@@ -85,15 +110,14 @@ form {
 }
 .form-wrapper input {
     width: 100%;
-
     padding: 10px 5px;
     color: #333333;
-    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    /*font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';*/
     border: 0;
     background: #eee;
     -moz-border-radius: 3px 0 0 3px;
     -webkit-border-radius: 3px 0 0 3px;
-    border-radius:4px;
+    border-radius: 4px;
 }
 .form-wrapper input:focus {
     outline: 0;
@@ -108,7 +132,72 @@ form {
     font-weight: normal;
     font-style: italic;
 }
+#searchform {
+    text-align: center;
+    padding-bottom: 30px;
 
+}
+#searchform input {
+    width: 65%;
+    margin-right: 30px;
+}
+#searchform input, #searchform button {
+    display: inline-block
+}
+@keyframes animatedBackground {
+    from {
+        background-position: 0 0;
+
+
+    }
+    to {
+        background-position: 100% 0;
+
+    }
+}
+.sort-wrapper {
+  opacity: 1;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+.form-inline {
+  margin-bottom: 20px;
+}
+.tasks-wrapper {
+    /*background: url(img/bg-clouds.png);
+    background-position: 100% 100%;
+    background-repeat: repeat-x;
+    animation: animatedBackground  40s linear infinite;*/
+}
+.tasks-wrapper, .search-wrapper, .todowrapper {
+    border: 1px solid #dddddd;
+}
+.search-inner-wrapper {
+    background-color: rgba(91, 202, 255, 0.98);
+}
+.todo-wrapper {
+    color: #ffffff;
+    /*url(img/bg.png) no-repeat*/
+    /*background-color: rgba(91, 202, 255, 0.98);*/
+    background-image: url(img/bg.png), linear-gradient(to bottom, #008BC3, #0051a5);
+}
+.accounts-dialog {
+    background-color: rgba(91, 202, 255, 0.98);
+}
+.todo-wrapper a {
+    color: #ffffff;
+    border-bottom-color: #2ac2ff;
+}
+.todo-wrapper a:hover {
+ color: #2ac2ff;
+}
+header, .search-container, .tasks-wrapper ul {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 650px;
+}
 input:checkbox {
     overflow: visible;
     position: relative;
@@ -121,20 +210,16 @@ input:checkbox {
     font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
     color: #fff;
     text-transform: uppercase;
-
     -moz-border-radius: 0 3px 3px 0;
     -webkit-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
 }
-
-
 ul {
     border-radius: 12px;
     margin: 0;
     padding: 0;
-    background: none
-    opacity: 0.6;
+    background: none opacity: 0.6;
 }
 .delete {
     float: right;
@@ -149,11 +234,10 @@ li {
     list-style: none;
     padding: 15px;
     border-bottom: #eee solid 1px;
-      color:#ffffff;
+    /*color:#ffffff;*/
 }
 li .text {
     margin-left: 10px;
-
 }
 li.checked {
     color: #888;
@@ -161,27 +245,37 @@ li.checked {
 li.checked .text {
     text-decoration: line-through;
 }
-li.private, li button {
-
-    border: 0 rgba(0,0,0,0);
+li.private {
+    border-bottom: #eee solid 1px;
+}
+li button {
+    border: 0 rgba(0, 0, 0, 0);
 }
 li.private button {
-    background: #d83c3c;
-    border: 0 rgba(0,0,0,0);
+    padding: 8px;
+    background-color: #FF3B30;
+    /*border: 0 rgba(0, 0, 0, 0);*/
+}
+li.private button.delete {
+    background-color: #ffffff;
+    color: #FF3B30;
 }
 header .hide-completed {
-  color: #ffffff;
+    /*color: #ffffff;*/
 }
 .toggle-private {
+    padding: 8px;
+    border-width: 2px;
+    font-weight: 400;
+    color: #ffffff;
     margin-left: 5px;
-     background: rgb(28, 184, 65);
-     border-radius: 4px;
-      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    background-color: #05AE0E;
+    border-radius: 6px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 .alert-warning {
-  color: #d83c3c;
-  background-color: #ffffff;
-
+    color: #d83c3c;
+    background-color: #ffffff;
 }
 @media (max-width: 600px) {
     li {
