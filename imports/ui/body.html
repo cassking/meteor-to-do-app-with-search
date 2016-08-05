@@ -57,46 +57,33 @@
   <div class="form-group">
     <form id="searchform">
       <input class="form-control" type="text" data-action="search" id="searchValue" placeholder="Enter search terms here."/>
-      <button id ="search" class=" btn   btn-small  btn-primary ">Search</button>
-      <!-- <input class="form-control" type="text" data-action="searchname" id="searchValue"   placeholder="Enter name here."/>
-
-      <button id ="name" class=" btn   btn-small  btn-info btn-fill">Search by name</button> -->
+      <button id="search" class=" btn   btn-small  btn-primary ">Search</button>
     </form>
-{{> sort}}
+    <div class="sort-wrapper">
+      <form class="form-inline">
+        <div class="btn-group" data-toggle="buttons-radio">
+          <button id="sort_by_name" class="btn btn-small btn-primary btn-fill " type="button">Sort by Name</button>
+          <button id="sort_by_date" class="btn btn-small btn-info btn-fill " type="button">Sort by Date</button>
+        </div>
+        <button class="reset btn btn-danger btn-small" type="button"><i class="icon-refresh icon-white"></i> Reset</button>
+
+        <a class="btn btn-link btn-small" href="#"><i class="icon-question-sign"></i> Help</a>
+      </form>
+    </div>
+
 </div>
   <ol>
-{{# if results isTrue }}
     {{#each results}}
-       <!-- Iterate on all Objects fetched by the Helper Class-->
-        <li>
-<strong>Author:</strong> {{username}}
-<strong>Task text:</strong> {{text}}<br />
-<strong>Date:</strong>   {{createdAt}}
-        </li>
-        {{else}}
-        <p>
-           Sorry, we found no matches!
-        </p>
+     <!-- Iterate on all Objects fetched by the Helper Class-->
+      <li>
+        <strong>Author:</strong> {{username}}
+        <strong>Task text:</strong> {{text}}<br />
+        <strong>Date:</strong>   {{createdAt}}
+      </li>
+    {{else}}
+      <p>
+         Sorry, we found no matches!
+      </p>
     {{/each}}
-    {{/if}}
-
   </ol>
-</template>
-
-<template name="sort">
-  <div class="sort-wrapper">
-    <form class="form-inline">
-      <div class="btn-group" data-toggle="buttons-radio">
-        <button class="sort_by_name btn btn-small btn-primary btn-fill " type="button">Sort by Name</button>
-        <button class="sort_by_date btn btn-small btn-info btn-fill " type="button">Sort by Date</button>
-
-        <!-- <button class="sort_by_score btn btn-small {{#if sort_by_is 'score'}}active{{/if}}" type="button">Sort by Score</button> -->
-        <!-- <button class="sort_by_name btn btn-small {{#if sort_by_is 'name'}}active{{/if}}" type="button">Sort by Name</button> -->
-      </div>
-      <button class="reset btn btn-danger btn-small" type="button"><i class="icon-refresh icon-white"></i> Reset</button>
-
-      <a class="btn btn-link btn-small" href="#"><i class="icon-question-sign"></i> Help</a>
-    </form>
-  </div>
-
 </template>

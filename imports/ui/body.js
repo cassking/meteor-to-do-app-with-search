@@ -5,6 +5,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Tasks } from '../api/tasks.js';
 import './task.js';
 import './search.js';
+ 
 import './body.html';
 //reactive dictionary
 //Everything inside <template> tags is compiled into Meteor templates

@@ -6,6 +6,7 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { Tasks } from '../api/tasks.js';
 import './search.js';
 import './body.html';
+ 
 Template.task.helpers({
   //Define helper to check ownership
   isOwner() {

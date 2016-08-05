@@ -6,11 +6,5 @@ Meteor.startup(() => {
 });
 //search, you need to build a text index.
 Meteor.startup(function(){
-
-  // console.log(Tasks);
-  // Tasks._ensureIndex({
-  //  "value": "text",
-  //   "title": "text"
-  // });
-  // // seed();
+ 
 })
