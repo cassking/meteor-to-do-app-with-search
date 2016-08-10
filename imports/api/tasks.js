@@ -48,7 +48,7 @@ Meteor.methods({
             createdAt: new Date(), //current time
             owner: this.userId,
             username: Meteor.users.findOne(this.userId).username,
-        });
+        }).sort({ createdAt: -1});
 
     },
     'tasks.remove' (taskId) {

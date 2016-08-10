@@ -135,14 +135,19 @@ form {
 #searchform {
     text-align: center;
     padding-bottom: 30px;
-
 }
-#searchform input {
+#searchform input  {
     width: 65%;
     margin-right: 30px;
 }
-#searchform input, #searchform button {
+#searchform input, #searchform button,
+.register input, .register button,
+.login input, .login button {
     display: inline-block
+}
+.register input, .login input  {
+  width: 85%;
+
 }
 @keyframes animatedBackground {
     from {

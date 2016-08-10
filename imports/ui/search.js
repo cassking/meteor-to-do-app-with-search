@@ -12,6 +12,7 @@ import {
 import {
     Tasks
 } from '../api/tasks.js';
+import './users.js';
 import './body.html';
 
 
@@ -33,32 +34,51 @@ if (Meteor.isClient) {
     //     });
     // };
     Session.set("sort_by_name", {
-       username: 1
+        username: 1
     });
 
     //client stuff
     Template.search.events({
 
         "click  #search": function(e) {
-          console.log("Searching...");
+            // console.log("Searching...");
             //here i set a session for the evetn
             e.preventDefault();
             //set variable to get text/search input   value
             Session.set('searching', $('input[data-action="search"]').val());
+            //empty input
+            if ( ($('input[data-action="search"]').val() === "") || ($('input[data-action="search "]' ).val() === null) ){
+              Session.set('searching', null);
+              $('input[data-action="search"]').val('');
+                return false;
+            } else {
+                $('input[data-action="search"]').val('');
+            }
         },
         "click  #sort_by_name": function(e) {
-          e.preventDefault();
-          var order;
-          var origValue = Session.get("sort_by_name")
+            e.preventDefault();
+            var order;
+            var origValue = Session.get("sort_by_name")
 
-          if(origValue.username === 1) {
-            order = -1;
-          }
-          else {
-            order = 1;
-          }
-          Session.set("sort_by_name", {username: order});
+            if (origValue.username === 1) {
+                order = -1;
+            } else {
+                order = 1;
+            }
+            Session.set("sort_by_name", {
+                username: order
+            });
+            console.log(Tasks.find());
         },
+        'click .reset': function() {
+            Session.set('searching', null);
+            $('input[data-action="search"]').val('');
+            $('.message').html($('.message').html().replace('Sorry, we found no matches!', 'You have cleared the search form'));
+        },
+        'click .hide-results': function() {
+            $('.results').slideToggle("slow");
+        },
+
     });
     Template.search.helpers({
 
@@ -67,16 +87,26 @@ if (Meteor.isClient) {
             //get the session from form submit event and set it to variable
             var keyword = Session.get('searching');
             var sorted_name = Session.get("sort_by_name");
+
+            var sorted_month = Session.get("sort_by_month");
+
             var query = new RegExp(keyword, 'i');
             var query_meta = {}
             var results = null;
-
+            // var month =
+            // var year =
             console.log(sorted_name);
 
             if (sorted_name) {
-              query_meta = {sort: sorted_name}
+                query_meta = {
+                    sort: sorted_name
+                }
             }
-
+            if (sorted_month) {
+                query_meta = {
+                    sort: sorted_month
+                }
+            }
             results = Tasks.find({
                 $or: [{
                     text: query
@@ -89,7 +119,8 @@ if (Meteor.isClient) {
             return results;
         },
 
-  
+
+
 
     });
 

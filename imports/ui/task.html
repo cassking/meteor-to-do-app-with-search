@@ -2,7 +2,10 @@
 <template name="task">
     <li class="{{#if checked}}checked{{/if}} {{#if private }}private{{/if}}">
       <button class="delete">&times;</button>
+        {{#if currentUser }}
       <input type="checkbox" checked="{{checked}}" class="toggle-checked"  />
+      {{else}}
+      {{/if}}
       <!-- can make tasks private -->
       <!-- give it a special class if it is marked private -->
   {{#if isOwner }}
